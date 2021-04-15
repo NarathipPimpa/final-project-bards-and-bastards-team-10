@@ -5,15 +5,15 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637515026720000000
-    m_Hash: 4052654584
+      ticks: 637525912386238720
+    m_Hash: 2283270627
   m_LockFileStatus:
     m_FilePath: D:/Unity/final-project-bards-and-bastards-team-10/Bards and Bastards/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637525908323891412
+      ticks: 637541150999932224
     m_Hash: 2550272986
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
