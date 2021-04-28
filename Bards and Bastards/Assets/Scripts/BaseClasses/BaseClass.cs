@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class BaseEnemy
+public class BaseClass
 {
-    public string name;
+
+    public string theName;
 
     public float baseHP;
     public float currentHP;
@@ -19,5 +19,5 @@ public class BaseEnemy
     public float baseDEF;
     public float currentDEF;
 
-
+    public List<BaseAttack> attacks = new List<BaseAttack>();
 }

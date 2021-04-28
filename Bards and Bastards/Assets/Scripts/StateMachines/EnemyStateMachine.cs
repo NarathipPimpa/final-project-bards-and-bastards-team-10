@@ -22,17 +22,17 @@ public class EnemyStateMachine : MonoBehaviour
 
     //for progressbar
     private float current_cooldown = 0f;
-    private float max_cooldown = 5f;
+    private float max_cooldown = 10f;
 
     //this gameobject
     private Vector3 startposition;
-
+    public GameObject Selector;
     //timeforaction stuff
     private bool actionStarted = false;
 
     public GameObject HeroToAttack;
 
-    private float animSpeed = 5f;
+    private float animSpeed = 10f;
 
 
 
@@ -42,6 +42,7 @@ public class EnemyStateMachine : MonoBehaviour
     void Start()
     {
         currentState = TurnState.PROCESSING;
+        Selector.SetActive(false);
         BSM = GameObject.Find("BattleManager").GetComponent<BattleStateMachine>();
         startposition = transform.position;
 
@@ -99,10 +100,14 @@ public class EnemyStateMachine : MonoBehaviour
     void ChooseAction()
     {
         HandleTurn myAttack = new HandleTurn();
-        myAttack.Attacker = enemy.name;
+        myAttack.Attacker = enemy.theName;
         myAttack.Type = "Enemy";
         myAttack.AttackersGameObject = this.gameObject;
         myAttack.AttackersTarget = BSM.HeroesInBattle[Random.Range(0, BSM.HeroesInBattle.Count)];
+
+        int num = Random.Range(0, enemy.attacks.Count);
+        myAttack.choosenAttack = enemy.attacks[num];
+        Debug.Log(this.gameObject.name + " has choosen " + myAttack.choosenAttack.attackName + " and do " + myAttack.choosenAttack.attackDamage + " damage!");
         BSM.CollectActions(myAttack);
     }
 
@@ -116,14 +121,14 @@ public class EnemyStateMachine : MonoBehaviour
         actionStarted = true;
 
         //animate the enemy near the hero to attack
-        Vector3 heroPosition = new Vector3(HeroToAttack.transform.position.x + 1f, HeroToAttack.transform.position.y, HeroToAttack.transform.position.z);
-        while (MoveTowardsEnemy(heroPosition)) { yield return null; }
+        Vector3 enemyPosition = new Vector3(HeroToAttack.transform.position.x+1, HeroToAttack.transform.position.y, HeroToAttack.transform.position.z);
+        while (MoveTowardsEnemy(enemyPosition)) { yield return null; }
 
         //wait a bit
         yield return new WaitForSeconds(0.5f);
 
         //do damage
-
+        DoDamage();
 
         //animate back to startposition
         Vector3 firstPosition = startposition;
@@ -153,4 +158,11 @@ public class EnemyStateMachine : MonoBehaviour
         return target != (transform.position = Vector3.MoveTowards(transform.position, target, animSpeed * Time.deltaTime));
     }
 
+
+    void DoDamage()
+    {
+        float calculate_damage = enemy.currentATK + BSM.PerformList[0].choosenAttack.attackDamage;
+        HeroToAttack.GetComponent<HeroStateMachine>().TakeDamage(calculate_damage);
+
+    }
 }

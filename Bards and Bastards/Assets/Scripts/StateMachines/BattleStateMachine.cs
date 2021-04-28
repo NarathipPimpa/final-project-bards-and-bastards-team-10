@@ -37,12 +37,19 @@ public class BattleStateMachine : MonoBehaviour
     public Transform Spacer;
 
 
+    public GameObject AttackPanel;
+    public GameObject EnemySelectPanel;
+
+
     void Start()
     {
         battleStates = PerformAction.WAIT;
         EnemiesInBattle.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
         HeroesInBattle.AddRange(GameObject.FindGameObjectsWithTag("Hero"));
+        HeroInput = HeroGUI.ACTIVATE;
 
+        AttackPanel.SetActive(false);
+        EnemySelectPanel.SetActive(false);
 
         EnemyButtons();
     }
@@ -75,7 +82,9 @@ public class BattleStateMachine : MonoBehaviour
 
                     if (PerformList[0].Type == "Hero")
                     {
-
+                        HeroStateMachine HSM = performer.GetComponent<HeroStateMachine>();
+                        HSM.EnemyToAttack = PerformList[0].AttackersTarget;
+                        HSM.currentState = HeroStateMachine.TurnState.ACTION;
                     }
 
                     battleStates = PerformAction.PERFORMACTION;
@@ -85,11 +94,46 @@ public class BattleStateMachine : MonoBehaviour
 
             case (PerformAction.PERFORMACTION):
                 {
-
+                    //idle state
                     break;
                 }
 
         }
+
+
+        switch (HeroInput)
+        {
+            case (HeroGUI.ACTIVATE):
+                {
+                    if(HeroesToManage.Count > 0)
+                    {
+
+                        HeroesToManage[0].transform.Find("Selector").gameObject.SetActive(true);
+                        HeroChoice = new HandleTurn();
+                        AttackPanel.SetActive(true);
+                        HeroInput = HeroGUI.WAITING;
+
+                    }
+
+
+                    break;
+                }
+
+            case (HeroGUI.WAITING):
+                {
+                    //idle state
+                    break;
+                }
+
+            case (HeroGUI.DONE):
+                {
+                    HeroInputDone();
+                    break;
+                }
+
+        }
+
+
     }
 
 
@@ -112,7 +156,7 @@ public class BattleStateMachine : MonoBehaviour
             EnemyStateMachine current_enemy = enemy.GetComponent<EnemyStateMachine>();
 
             Text buttonText = newButton.transform.Find("Text").gameObject.GetComponent<Text>();
-            buttonText.text = current_enemy.enemy.name;
+            buttonText.text = current_enemy.enemy.theName;
 
             button.EnemyPrefab = enemy;
 
@@ -121,6 +165,36 @@ public class BattleStateMachine : MonoBehaviour
         }
 
 
+    }
+
+
+    public void Input1()//attack button
+    {
+        HeroChoice.Attacker = HeroesToManage[0].name;
+        HeroChoice.AttackersGameObject = HeroesToManage[0];
+        HeroChoice.Type = "Hero";
+
+        AttackPanel.SetActive(false);
+        EnemySelectPanel.SetActive(true);
+
+    }
+
+
+    public void Input2(GameObject choosenEnemy)//enemy selection
+    {
+
+        HeroChoice.AttackersTarget = choosenEnemy;
+        HeroInput = HeroGUI.DONE;
+
+    }
+
+    void HeroInputDone()
+    {
+        PerformList.Add(HeroChoice);
+        EnemySelectPanel.SetActive(false);
+        HeroesToManage[0].transform.Find("Selector").gameObject.SetActive(false);
+        HeroesToManage.RemoveAt(0);
+        HeroInput = HeroGUI.ACTIVATE;
     }
 
 
