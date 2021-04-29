@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1679677762261929464}
   - component: {fileID: 1679677762261929471}
   m_Layer: 0
-  m_Name: BaseHero 1
+  m_Name: Priest
   m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,23 +111,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hero:
-    theName: 'Warrior '
-    baseHP: 125
-    currentHP: 125
-    baseMP: 100
-    currentMP: 100
+    theName: Priest
+    baseHP: 75
+    currentHP: 75
+    baseMP: 200
+    currentMP: 200
     baseATK: 10
     currentATK: 10
-    baseDEF: 3
-    currentDEF: 3
+    baseDEF: 0
+    currentDEF: 0
     attacks:
-    - {fileID: -1648131486582399645, guid: 1f97f6b2887835b46be5dd68f4eadc59, type: 3}
-    - {fileID: -673176510313964263, guid: d201a8694783e724886b8ae7dfbdec2e, type: 3}
-    - {fileID: 6447853212542708516, guid: e38d7be8ceeb6964aa376b7d8f8ef67f, type: 3}
-    - {fileID: 1044431756915727428, guid: 7974e6ccc63b1204192390d67e12937e, type: 3}
-    - {fileID: 1646720270207682913, guid: 73a0dc2bbf09c9446b17dd00a1d7ecc6, type: 3}
-    - {fileID: 3295591726020886649, guid: 324c97c806a63254c876ebec7a9689b7, type: 3}
-    - {fileID: -778976323498214657, guid: adfcd54c5c9b6fc47be1660aed4a21d9, type: 3}
+    - {fileID: -7290750814278773760, guid: 03388686dd2dc0b4e99c664b6e55403f, type: 3}
+    - {fileID: -8693881570765246439, guid: b20d15899d8094c498bc63daf1487b64, type: 3}
+    - {fileID: 6729637683142883521, guid: 3244e3f1b2767dd459c5e2a6af06af2a, type: 3}
+    - {fileID: -1761617183229395035, guid: 4ef128ea58c4f7344be35b2688663730, type: 3}
+    - {fileID: 4969905621258246425, guid: 36e78d1bb000e7946a002449ba8f55cc, type: 3}
+    - {fileID: -4818267898306305032, guid: e2badf5bef448e04b82022d16b2d7027, type: 3}
+    - {fileID: -6414392654046503899, guid: 56e6842161b0b2744b32e4441c7efe88, type: 3}
   currentState: 0
   ProgressBar: {fileID: 0}
   Selector: {fileID: 1679677764301489560}

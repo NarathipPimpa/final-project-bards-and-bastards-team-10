@@ -118,8 +118,8 @@ MonoBehaviour:
     currentMP: 100
     baseATK: 10
     currentATK: 10
-    baseDEF: 3
-    currentDEF: 3
+    baseDEF: 4
+    currentDEF: 4
     attacks:
     - {fileID: -1648131486582399645, guid: 1f97f6b2887835b46be5dd68f4eadc59, type: 3}
     - {fileID: -673176510313964263, guid: d201a8694783e724886b8ae7dfbdec2e, type: 3}
