@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8807987528932551229}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
@@ -122,15 +122,16 @@ MonoBehaviour:
     currentDEF: 0
     attacks:
     - {fileID: 8383883701407810761, guid: 5070f2d4dc98701439684bec034d9419, type: 3}
-    - {fileID: 5405416185764934959, guid: 41c784c991b3ea6429c9f56a16d80b49, type: 3}
-    - {fileID: -5478462660576521505, guid: 3d9c96bf5460e8a449573054526a3f66, type: 3}
+    MagicAttacks:
+    - {fileID: -7047603185190415844, guid: e5bac815c6a955f40a59b5351a86104e, type: 3}
     - {fileID: 3909195915042629933, guid: d355d8c34832cac409e53e32e18d5ec2, type: 3}
     - {fileID: -5930945074033058409, guid: 2808d81e1fdda3f4faef49c8c72f5703, type: 3}
-    - {fileID: -7047603185190415844, guid: e5bac815c6a955f40a59b5351a86104e, type: 3}
+    - {fileID: 5405416185764934959, guid: 41c784c991b3ea6429c9f56a16d80b49, type: 3}
+    - {fileID: -5478462660576521505, guid: 3d9c96bf5460e8a449573054526a3f66, type: 3}
   currentState: 0
-  ProgressBar: {fileID: 0}
   Selector: {fileID: 8807987529651757659}
   EnemyToAttack: {fileID: 0}
+  HeroPanel: {fileID: 4674449188274948290, guid: d357717e593e620409e4a5c504672a1a, type: 3}
 --- !u!1001 &5251635547758831991
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -46,4 +46,4 @@ MonoBehaviour:
   attackName: Aimed Shot
   attackDescription: Line up a shot, dealing large damage to an enemy
   attackDamage: 15
-  attackCost: 3
+  attackCost: 0

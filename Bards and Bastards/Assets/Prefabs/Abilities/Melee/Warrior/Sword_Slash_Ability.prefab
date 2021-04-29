@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8166542779782499831}
   - component: {fileID: -1648131486582399645}
   m_Layer: 0
-  m_Name: Sword_Slash
+  m_Name: Sword_Slash_Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,5 +46,5 @@ MonoBehaviour:
   attackName: Sword Slash
   attackDescription: 'Cut an enemy with your sword, dealing damage and causing them
     to bleed for 5 rounds '
-  attackDamage: 5
-  attackCost: 3
+  attackDamage: 10
+  attackCost: 0
