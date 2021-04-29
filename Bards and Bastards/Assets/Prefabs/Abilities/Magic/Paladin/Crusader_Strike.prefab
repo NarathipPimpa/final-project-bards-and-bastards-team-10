@@ -46,4 +46,4 @@ MonoBehaviour:
   attackName: Crusader Strike
   attackDescription: Attack an enemy, dealing damage
   attackDamage: 10
-  attackCost: 3
+  attackCost: 0

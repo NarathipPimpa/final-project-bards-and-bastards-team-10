@@ -10,7 +10,10 @@ public class BattleStateMachine : MonoBehaviour
     {
         WAIT,
         TAKEACTION,
-        PERFORMACTION
+        PERFORMACTION,
+        CHECKALIVE,
+        WIN,
+        LOSE
     }
 
     public PerformAction battleStates;
@@ -42,12 +45,16 @@ public class BattleStateMachine : MonoBehaviour
     public GameObject MagicPanel;
 
 
-    //magic attack
+    //attack of heroes
     public Transform actionSpacer;
     public Transform magicSpacer;
     public GameObject actionButton;
     public GameObject magicButton;
     private List<GameObject> atkBtns = new List<GameObject>();
+
+    //enemy buttons
+    private List<GameObject> enemyBtns = new List<GameObject>();
+
 
 
     void Start()
@@ -78,6 +85,7 @@ public class BattleStateMachine : MonoBehaviour
 
                     break;
                 }
+                
 
             case (PerformAction.TAKEACTION):
                 {
@@ -123,6 +131,48 @@ public class BattleStateMachine : MonoBehaviour
                     //idle state
                     break;
                 }
+
+            case (PerformAction.CHECKALIVE):
+                {
+                    if (HeroesInBattle.Count < 1)
+                    {
+                        battleStates = PerformAction.LOSE;
+                        //lose the game
+                    }
+                    else if(EnemiesInBattle.Count < 1)
+                    {
+                        battleStates = PerformAction.WIN;
+                        //win battle
+                    }
+                    else
+                    {
+                        //call function
+                        ClearAttackPanel();
+                        HeroInput = HeroGUI.ACTIVATE;
+                    }
+
+
+                    break;
+                }
+
+            case (PerformAction.LOSE):
+                {
+                    Debug.Log("You Lost the Battle");
+                    break;
+                }
+
+            case (PerformAction.WIN):
+                {
+                    Debug.Log("You Won the Battle");
+                    for(int i = 0; i < HeroesInBattle.Count; i++)
+                    {
+                        HeroesInBattle[i].GetComponent<HeroStateMachine>().currentState = HeroStateMachine.TurnState.WAITING;
+                    }
+
+                    break;
+                }
+
+
 
         }
 
@@ -175,8 +225,15 @@ public class BattleStateMachine : MonoBehaviour
 
 
 
-    void EnemyButtons()
+    public void EnemyButtons()
     {
+        //cleanup
+        foreach(GameObject enemyBtn in enemyBtns)
+        {
+            Destroy(enemyBtn);
+        }
+        enemyBtns.Clear();
+        //create buttons
         foreach(GameObject enemy in EnemiesInBattle)
         {
             GameObject newButton = Instantiate(enemyButton) as GameObject;
@@ -190,6 +247,7 @@ public class BattleStateMachine : MonoBehaviour
             button.EnemyPrefab = enemy;
 
             newButton.transform.SetParent(Spacer, false);
+            enemyBtns.Add(newButton);
 
         }
 
@@ -202,11 +260,14 @@ public class BattleStateMachine : MonoBehaviour
         HeroChoice.Attacker = HeroesToManage[0].name;
         HeroChoice.AttackersGameObject = HeroesToManage[0];
         HeroChoice.Type = "Hero";
+        HeroChoice.choosenAttack = HeroesToManage[0].GetComponent<HeroStateMachine>().hero.attacks[0];
 
         AttackPanel.SetActive(false);
         EnemySelectPanel.SetActive(true);
 
     }
+
+  
 
 
     public void Input2(GameObject choosenEnemy)//enemy selection
@@ -220,20 +281,29 @@ public class BattleStateMachine : MonoBehaviour
     void HeroInputDone()
     {
         PerformList.Add(HeroChoice);
-        EnemySelectPanel.SetActive(false);
-
         //clean the attackpanel
-        foreach(GameObject atkbtn in atkBtns)
-        {
-            Destroy(atkbtn);
-        }
-        atkBtns.Clear();
+        ClearAttackPanel();
 
 
         HeroesToManage[0].transform.Find("Selector").gameObject.SetActive(false);
         HeroesToManage.RemoveAt(0);
         HeroInput = HeroGUI.ACTIVATE;
     }
+
+
+    void ClearAttackPanel()
+    {
+        EnemySelectPanel.SetActive(false);
+        AttackPanel.SetActive(false);
+        MagicPanel.SetActive(false);
+
+        foreach (GameObject atkbtn in atkBtns)
+        {
+            Destroy(atkbtn);
+        }
+        atkBtns.Clear();
+    }
+
 
     void CreateAttackButtons()
     {
@@ -244,6 +314,7 @@ public class BattleStateMachine : MonoBehaviour
         AttackButton.transform.SetParent(actionSpacer, false);
         atkBtns.Add(AttackButton);
 
+        
 
         GameObject MagicAttackButton = Instantiate(actionButton) as GameObject;
         Text MagicAttackButtonText = MagicAttackButton.transform.Find("Text").gameObject.GetComponent<Text>();

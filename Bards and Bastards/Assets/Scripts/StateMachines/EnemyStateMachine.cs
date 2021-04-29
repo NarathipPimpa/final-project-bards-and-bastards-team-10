@@ -34,7 +34,8 @@ public class EnemyStateMachine : MonoBehaviour
 
     private float animSpeed = 10f;
 
-
+    //alive
+    private bool alive = true;
 
 
 
@@ -80,6 +81,47 @@ public class EnemyStateMachine : MonoBehaviour
                 }
             case (TurnState.DEAD):
                 {
+                    if (!alive)
+                    {
+                        return;
+                    }
+                    else
+                    {
+
+                        //changetag of enemy
+                        this.gameObject.tag = "DeadEnemy";
+                        //not attackable by hero
+                        BSM.EnemiesInBattle.Remove(this.gameObject);
+                        //disable the selector
+                        Selector.SetActive(false);
+
+                        //remove all inputs enemyattacks
+                        if (BSM.EnemiesInBattle.Count > 0)
+                        {
+                            for (int i = 0; i < BSM.PerformList.Count; i++)
+                            {
+                                if (BSM.PerformList[i].AttackersGameObject == this.gameObject)
+                                {
+                                    BSM.PerformList.Remove(BSM.PerformList[i]);
+                                }
+
+                                if (BSM.PerformList[i].AttackersTarget == this.gameObject)
+                                {
+                                    BSM.PerformList[i].AttackersTarget = BSM.EnemiesInBattle[Random.Range(0, BSM.EnemiesInBattle.Count)];
+                                }
+                            }
+                        }
+                        //change the color to gray / play dead animation
+                        this.gameObject.GetComponent<MeshRenderer>().material.color = new Color32(100, 100, 100, 255);
+                        alive = false;
+                        //reset enemy buttons
+                        BSM.EnemyButtons();
+                        //check alive
+                        BSM.battleStates = BattleStateMachine.PerformAction.CHECKALIVE;
+
+
+
+                    }
 
                     break;
                 }
@@ -165,4 +207,22 @@ public class EnemyStateMachine : MonoBehaviour
         HeroToAttack.GetComponent<HeroStateMachine>().TakeDamage(calculate_damage);
 
     }
+
+    public void TakeDamage(float getDamageAmount)
+    {
+        if (getDamageAmount > enemy.currentDEF)
+        {
+            enemy.currentHP = enemy.currentHP - (getDamageAmount - enemy.currentDEF);
+        }
+
+
+        if (enemy.currentHP <= 0)
+        {
+            enemy.currentHP = 0;
+            currentState = TurnState.DEAD;
+        }
+
+        
+    }
+
 }
