@@ -18,8 +18,8 @@ public class Warrior : BaseClass
 
         // values for attack are not permanent
         // values for defense are zero for most classes, but warrior starts with some armor due to naturally being a tank
-        baseDEF= 3 ;
-        currentDEF= 3;
+        baseDEF= 4 ;
+        currentDEF= 4;
         // all attacks the warrior has have the class name infront of it
         attacks = null;
 }

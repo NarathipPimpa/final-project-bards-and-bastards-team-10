@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8807987528932551227}
   - component: {fileID: 8807987528932551228}
   m_Layer: 0
-  m_Name: BaseHero 1
+  m_Name: Hunter
   m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,23 +111,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hero:
-    theName: 'Warrior '
-    baseHP: 125
-    currentHP: 125
+    theName: Hunter
+    baseHP: 100
+    currentHP: 100
     baseMP: 100
     currentMP: 100
-    baseATK: 10
-    currentATK: 10
-    baseDEF: 3
-    currentDEF: 3
+    baseATK: 15
+    currentATK: 15
+    baseDEF: 0
+    currentDEF: 0
     attacks:
-    - {fileID: -1648131486582399645, guid: 1f97f6b2887835b46be5dd68f4eadc59, type: 3}
-    - {fileID: -673176510313964263, guid: d201a8694783e724886b8ae7dfbdec2e, type: 3}
-    - {fileID: 6447853212542708516, guid: e38d7be8ceeb6964aa376b7d8f8ef67f, type: 3}
-    - {fileID: 1044431756915727428, guid: 7974e6ccc63b1204192390d67e12937e, type: 3}
-    - {fileID: 1646720270207682913, guid: 73a0dc2bbf09c9446b17dd00a1d7ecc6, type: 3}
-    - {fileID: 3295591726020886649, guid: 324c97c806a63254c876ebec7a9689b7, type: 3}
-    - {fileID: -778976323498214657, guid: adfcd54c5c9b6fc47be1660aed4a21d9, type: 3}
+    - {fileID: 8383883701407810761, guid: 5070f2d4dc98701439684bec034d9419, type: 3}
+    - {fileID: 5405416185764934959, guid: 41c784c991b3ea6429c9f56a16d80b49, type: 3}
+    - {fileID: -5478462660576521505, guid: 3d9c96bf5460e8a449573054526a3f66, type: 3}
+    - {fileID: 3909195915042629933, guid: d355d8c34832cac409e53e32e18d5ec2, type: 3}
+    - {fileID: -5930945074033058409, guid: 2808d81e1fdda3f4faef49c8c72f5703, type: 3}
+    - {fileID: -7047603185190415844, guid: e5bac815c6a955f40a59b5351a86104e, type: 3}
   currentState: 0
   ProgressBar: {fileID: 0}
   Selector: {fileID: 8807987529651757659}
