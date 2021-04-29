@@ -13,5 +13,6 @@ public class ChangeScene : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+        Debug.Log("app should have quit");
     }
 }
