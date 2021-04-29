@@ -39,6 +39,15 @@ public class BattleStateMachine : MonoBehaviour
 
     public GameObject AttackPanel;
     public GameObject EnemySelectPanel;
+    public GameObject MagicPanel;
+
+
+    //magic attack
+    public Transform actionSpacer;
+    public Transform magicSpacer;
+    public GameObject actionButton;
+    public GameObject magicButton;
+    private List<GameObject> atkBtns = new List<GameObject>();
 
 
     void Start()
@@ -50,6 +59,7 @@ public class BattleStateMachine : MonoBehaviour
 
         AttackPanel.SetActive(false);
         EnemySelectPanel.SetActive(false);
+        MagicPanel.SetActive(false);
 
         EnemyButtons();
     }
@@ -75,9 +85,25 @@ public class BattleStateMachine : MonoBehaviour
 
                     if (PerformList[0].Type == "Enemy")
                     {
+
                         EnemyStateMachine ESM = performer.GetComponent<EnemyStateMachine>();
-                        ESM.HeroToAttack = PerformList[0].AttackersTarget;
-                        ESM.currentState = EnemyStateMachine.TurnState.ACTION;
+                        for (int i = 0; i < HeroesInBattle.Count; i++)
+                        {
+                            if(PerformList[0].AttackersTarget == HeroesInBattle[i])
+                            {
+                                ESM.HeroToAttack = PerformList[0].AttackersTarget;
+                                ESM.currentState = EnemyStateMachine.TurnState.ACTION;
+                                break;
+                            }
+                            else
+                            {
+                                
+                                PerformList[0].AttackersTarget = HeroesInBattle[Random.Range(0, HeroesInBattle.Count)];
+                                ESM.HeroToAttack = PerformList[0].AttackersTarget;
+                                ESM.currentState = EnemyStateMachine.TurnState.ACTION;
+                            }
+                        }
+                        
                     }
 
                     if (PerformList[0].Type == "Hero")
@@ -111,6 +137,9 @@ public class BattleStateMachine : MonoBehaviour
                         HeroesToManage[0].transform.Find("Selector").gameObject.SetActive(true);
                         HeroChoice = new HandleTurn();
                         AttackPanel.SetActive(true);
+                        //populate action buttons
+                        CreateAttackButtons();
+
                         HeroInput = HeroGUI.WAITING;
 
                     }
@@ -192,11 +221,77 @@ public class BattleStateMachine : MonoBehaviour
     {
         PerformList.Add(HeroChoice);
         EnemySelectPanel.SetActive(false);
+
+        //clean the attackpanel
+        foreach(GameObject atkbtn in atkBtns)
+        {
+            Destroy(atkbtn);
+        }
+        atkBtns.Clear();
+
+
         HeroesToManage[0].transform.Find("Selector").gameObject.SetActive(false);
         HeroesToManage.RemoveAt(0);
         HeroInput = HeroGUI.ACTIVATE;
     }
 
+    void CreateAttackButtons()
+    {
+        GameObject AttackButton = Instantiate(actionButton) as GameObject;
+        Text AttackButtonText = AttackButton.transform.Find("Text").gameObject.GetComponent<Text>();
+        AttackButtonText.text = "Attack";
+        AttackButton.GetComponent<Button>().onClick.AddListener(() => Input1());
+        AttackButton.transform.SetParent(actionSpacer, false);
+        atkBtns.Add(AttackButton);
 
 
+        GameObject MagicAttackButton = Instantiate(actionButton) as GameObject;
+        Text MagicAttackButtonText = MagicAttackButton.transform.Find("Text").gameObject.GetComponent<Text>();
+        MagicAttackButtonText.text = "Magic";
+        MagicAttackButton.GetComponent<Button>().onClick.AddListener(() => Input3());
+        MagicAttackButton.transform.SetParent(actionSpacer, false);
+        atkBtns.Add(MagicAttackButton);
+
+        if (HeroesToManage[0].GetComponent<HeroStateMachine>().hero.MagicAttacks.Count > 0)
+        {
+            foreach (BaseAttack magicAtk in HeroesToManage[0].GetComponent<HeroStateMachine>().hero.MagicAttacks)
+            {
+                GameObject MagicButton = Instantiate(magicButton) as GameObject;
+                Text MagicButtonText = MagicButton.transform.Find("Text").gameObject.GetComponent<Text>();
+                MagicButtonText.text = magicAtk.attackName;
+
+                AttackButton ATB = MagicButton.GetComponent<AttackButton>();
+                ATB.magicAttackToPerform = magicAtk;
+                MagicButton.transform.SetParent(magicSpacer, false);
+                atkBtns.Add(MagicButton);
+
+            }
+        }
+        else
+        {
+            MagicAttackButton.GetComponent<Button>().interactable = false;
+        }
+
+    }
+
+
+    public void Input4(BaseAttack choosenMagic)//choosen magic attack
+    {
+        HeroChoice.Attacker = HeroesToManage[0].name;
+        HeroChoice.AttackersGameObject = HeroesToManage[0];
+        HeroChoice.Type = "Hero";
+
+        HeroChoice.choosenAttack = choosenMagic;
+        MagicPanel.SetActive(false);
+        EnemySelectPanel.SetActive(true);
+
+
+    }
+
+
+    public void Input3()//switching to magic attacks
+    {
+        AttackPanel.SetActive(false);
+        MagicPanel.SetActive(true);
+    }
 }

@@ -22,17 +22,30 @@ public class HeroStateMachine : MonoBehaviour
     //for progressbar
     private float current_cooldown = 0f;
     private float max_cooldown = 5f;
-    public Image ProgressBar;
+    private Image ProgressBar;
     public GameObject Selector;
     //IENumerator
     public GameObject EnemyToAttack;
     private bool actionStarted = false;
     private Vector3 startPosition;
     private float animSpeed = 10f;
+    //dead
+    private bool alive = true;
+    //heroPanel
+    private HeroPanelStats stats;
+    public GameObject HeroPanel;
+    private Transform HeroPanelSpacer;
+
 
 
     void Start()
     {
+        //find spacer 
+        HeroPanelSpacer = GameObject.Find("BattleCanvas").transform.Find("HeroPanel").transform.Find("HeroPanelSpacer");
+
+        //create panel, fill in info
+        CreateHeroPanel();
+
         startPosition = transform.position;
         current_cooldown = Random.Range(0, 2.5f);
         Selector.SetActive(false);
@@ -75,6 +88,49 @@ public class HeroStateMachine : MonoBehaviour
                 }
             case (TurnState.DEAD):
                 {
+                    if (!alive)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        //change tag
+                        this.gameObject.tag = "DeadHero";
+
+                        //not attackable by enemy
+                        BSM.HeroesInBattle.Remove(this.gameObject);
+
+                        //not manageable
+                        BSM.HeroesToManage.Remove(this.gameObject);
+
+                        //deactivate the selector
+                        Selector.SetActive(false);
+
+                        //reset gui
+                        BSM.AttackPanel.SetActive(false);
+                        BSM.EnemySelectPanel.SetActive(false);
+
+                        //remove item from performlist
+                        for(int i = 0; i <BSM.PerformList.Count; i++)
+                        {
+                            if (BSM.PerformList[i].AttackersGameObject == this.gameObject)
+                            {
+                                BSM.PerformList.Remove(BSM.PerformList[i]);
+                            }
+                        }
+
+                        //change color / play animation
+                        this.gameObject.GetComponent<MeshRenderer>().material.color = new Color32(100, 100, 100, 255);
+
+                        //reset heroinput
+                        BSM.HeroInput = BattleStateMachine.HeroGUI.ACTIVATE;
+
+                        alive = false;
+
+
+                        
+
+                    }
 
                     break;
                 }
@@ -153,8 +209,34 @@ public class HeroStateMachine : MonoBehaviour
 
         if(hero.currentHP <= 0)
         {
+            hero.currentHP = 0;
             currentState = TurnState.DEAD;
         }
+
+        UpdateHeroPanel();
     }
 
+
+    void CreateHeroPanel()
+    {
+        HeroPanel = Instantiate(HeroPanel) as GameObject;
+
+        stats = HeroPanel.GetComponent<HeroPanelStats>();
+
+        stats.HeroName.text = hero.theName;
+        stats.HeroHP.text = "HP: " + hero.currentHP + " / " + hero.baseHP; //HP: # / #
+        stats.HeroMP.text = "MP: " + hero.currentMP + " / " + hero.baseMP; //MP: # / #
+
+        ProgressBar = stats.ProgressBar;
+        HeroPanel.transform.SetParent(HeroPanelSpacer, false);
+
+
+    }
+
+
+    void UpdateHeroPanel()
+    {
+        stats.HeroHP.text = "HP: " + hero.currentHP + " / " + hero.baseHP; //HP: # / #
+        stats.HeroMP.text = "MP: " + hero.currentMP + " / " + hero.baseMP; //MP: # / #
+    }
 }
