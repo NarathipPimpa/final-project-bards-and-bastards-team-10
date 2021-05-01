@@ -10,7 +10,7 @@ public class SceneTrigger : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == ("Enemy1"))
+        if (other.gameObject.CompareTag("Enemy1"))
         {
             Debug.Log("Load Scene Enemy1");
             SceneManager.LoadScene("Enemy1");

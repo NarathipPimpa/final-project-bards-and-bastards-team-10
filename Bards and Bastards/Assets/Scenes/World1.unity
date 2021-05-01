@@ -96649,7 +96649,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
+  m_Size: {x: 1.0000001, y: 3, z: 1.0000002}
   m_Center: {x: 0.000000059604645, y: 1, z: -0.00000008940697}
 --- !u!23 &2121016510
 MeshRenderer:
@@ -96708,7 +96708,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2121016508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 151.27, y: 0, z: 157.85}
+  m_LocalPosition: {x: 151.27, y: 0.86, z: 157.85}
   m_LocalScale: {x: 20, y: 1, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
@@ -102095,6 +102095,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2828993782243008921, guid: 1624006f01d965e469d14a0f166c40dd, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2828993782243008921, guid: 1624006f01d965e469d14a0f166c40dd, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3770389762862762770, guid: 1624006f01d965e469d14a0f166c40dd, type: 3}
       propertyPath: m_Name
       value: Hero
