@@ -45,5 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Strike
   attackDescription: simple strike, dealing low damage.
-  attackDamage: 10
+  attackDamage: 5
   attackCost: 0

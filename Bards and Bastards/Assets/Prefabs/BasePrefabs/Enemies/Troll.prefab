@@ -98,8 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy:
     theName: Troll
-    baseHP: 500
-    currentHP: 500
+    baseHP: 300
+    currentHP: 300
     baseMP: 0
     currentMP: 0
     baseATK: 15

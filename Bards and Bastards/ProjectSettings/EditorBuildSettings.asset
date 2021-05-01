@@ -12,15 +12,54 @@ EditorBuildSettings:
     path: Assets/Scenes/World1.unity
     guid: ec853d8cb03f59a4588909b9ffdde320
   - enabled: 1
+    path: Assets/Scenes/Enemy1.unity
+    guid: d350cc38c65ce7a49b96481218a58959
+  - enabled: 1
+    path: Assets/Scenes/World1_1.unity
+    guid: 892bf7f37edbd87419a20af81ca2d070
+  - enabled: 1
+    path: Assets/Scenes/Enemy2.unity
+    guid: 73c088743ef46bc489ce47b2786520dd
+  - enabled: 1
+    path: Assets/Scenes/World1_2.unity
+    guid: 3d02c52dd691dd74f9e81b2e98570dac
+  - enabled: 1
+    path: Assets/Scenes/Enemy3.unity
+    guid: a4f850493ec76754f87e8f1ac409df6d
+  - enabled: 1
     path: Assets/Scenes/World2.unity
     guid: 1e4c5f607ee0443429bf0a7b8d52215a
+  - enabled: 1
+    path: Assets/Scenes/Enemy4.unity
+    guid: a11082ad63e52074b9991a56cdc052e9
+  - enabled: 1
+    path: Assets/Scenes/World2_4.unity
+    guid: 846aa1a2b8646084a8c12b1462e8b296
+  - enabled: 1
+    path: Assets/Scenes/Enemy5.unity
+    guid: 6d99a7844b9602d4c8285b996bcf7810
+  - enabled: 1
+    path: Assets/Scenes/World2_5.unity
+    guid: a1a18602b34469c4a85bbef6827e790b
+  - enabled: 1
+    path: Assets/Scenes/Enemy6.unity
+    guid: 7189d546d87b8904cb781953bee98e23
   - enabled: 1
     path: Assets/Scenes/World3.unity
     guid: bf25341c57d9d2d46b27a3c44e807236
   - enabled: 1
-    path: Assets/Scenes/Battle.unity
-    guid: 93b7a56193ad87346827dad0adadca77
+    path: Assets/Scenes/Enemy7.unity
+    guid: fe8f8298f33abcf429d70f4c7a772b16
   - enabled: 1
-    path: Assets/Scenes/Battle Alt.unity
+    path: Assets/Scenes/World3_7.unity
+    guid: 9a2cf9f5932142f4984236315fc92c92
+  - enabled: 1
+    path: Assets/Scenes/Boss.unity
     guid: 830d8fbf49ec07c4f937b7fd52f8bc2b
+  - enabled: 1
+    path: Assets/Scenes/Victory.unity
+    guid: b98a14acb8a2e8049a2dde30498c1cf3
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 2963634f9219ecc4ca650f5baff7ed95
   m_configObjects: {}

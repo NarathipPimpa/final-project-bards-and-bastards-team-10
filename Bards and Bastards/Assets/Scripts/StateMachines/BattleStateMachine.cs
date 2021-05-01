@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class BattleStateMachine : MonoBehaviour
@@ -158,6 +159,7 @@ public class BattleStateMachine : MonoBehaviour
             case (PerformAction.LOSE):
                 {
                     Debug.Log("You Lost the Battle");
+                    SceneManager.LoadScene("GameOver");
                     break;
                 }
 
@@ -169,6 +171,7 @@ public class BattleStateMachine : MonoBehaviour
                         HeroesInBattle[i].GetComponent<HeroStateMachine>().currentState = HeroStateMachine.TurnState.WAITING;
                     }
 
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                     break;
                 }
 
