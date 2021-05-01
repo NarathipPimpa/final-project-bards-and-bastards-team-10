@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3770389762862762768}
   - component: {fileID: 3770389762862762769}
   - component: {fileID: 6988129755512580496}
-  - component: {fileID: -3130018693959986125}
+  - component: {fileID: -2828993782243008921}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Hero
@@ -146,8 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ebd262b977aabb42aafa551ec1aeb99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &-3130018693959986125
-BoxCollider:
+--- !u!64 &-2828993782243008921
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -156,6 +156,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}

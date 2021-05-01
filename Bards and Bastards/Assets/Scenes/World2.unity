@@ -3396,6 +3396,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin
       objectReference: {fileID: 0}
+    - target: {fileID: 2024214413151462335, guid: d5d3b02e1f3bff0498b9c86b9c7bfe20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5d3b02e1f3bff0498b9c86b9c7bfe20, type: 3}
 --- !u!4 &526000681 stripped
@@ -4942,6 +4946,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Troll
       objectReference: {fileID: 0}
+    - target: {fileID: 7314897763947466905, guid: d97f92de2ff0c97408c113db11dd7f60, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7314897763947466909, guid: d97f92de2ff0c97408c113db11dd7f60, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -5531,6 +5539,10 @@ PrefabInstance:
     - target: {fileID: 2024214413151462334, guid: d5d3b02e1f3bff0498b9c86b9c7bfe20, type: 3}
       propertyPath: m_Name
       value: Goblin (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024214413151462335, guid: d5d3b02e1f3bff0498b9c86b9c7bfe20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5d3b02e1f3bff0498b9c86b9c7bfe20, type: 3}
@@ -7646,6 +7658,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Troll
       objectReference: {fileID: 0}
+    - target: {fileID: 7314897763947466905, guid: d97f92de2ff0c97408c113db11dd7f60, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7314897763947466909, guid: d97f92de2ff0c97408c113db11dd7f60, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -8346,6 +8362,10 @@ PrefabInstance:
     - target: {fileID: 7314897763947466904, guid: d97f92de2ff0c97408c113db11dd7f60, type: 3}
       propertyPath: m_Name
       value: Troll (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314897763947466905, guid: d97f92de2ff0c97408c113db11dd7f60, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7314897763947466909, guid: d97f92de2ff0c97408c113db11dd7f60, type: 3}
       propertyPath: m_RootOrder
@@ -9102,6 +9122,10 @@ PrefabInstance:
     - target: {fileID: 2024214413151462334, guid: d5d3b02e1f3bff0498b9c86b9c7bfe20, type: 3}
       propertyPath: m_Name
       value: Goblin (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024214413151462335, guid: d5d3b02e1f3bff0498b9c86b9c7bfe20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5d3b02e1f3bff0498b9c86b9c7bfe20, type: 3}
@@ -10348,6 +10372,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2024214413151462335, guid: d5d3b02e1f3bff0498b9c86b9c7bfe20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5d3b02e1f3bff0498b9c86b9c7bfe20, type: 3}
 --- !u!4 &1693677030 stripped
@@ -11122,6 +11150,10 @@ PrefabInstance:
     - target: {fileID: 2024214413151462334, guid: d5d3b02e1f3bff0498b9c86b9c7bfe20, type: 3}
       propertyPath: m_Name
       value: Goblin
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024214413151462335, guid: d5d3b02e1f3bff0498b9c86b9c7bfe20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5d3b02e1f3bff0498b9c86b9c7bfe20, type: 3}
@@ -11987,6 +12019,10 @@ PrefabInstance:
     - target: {fileID: 2024214413151462334, guid: d5d3b02e1f3bff0498b9c86b9c7bfe20, type: 3}
       propertyPath: m_Name
       value: Goblin
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024214413151462335, guid: d5d3b02e1f3bff0498b9c86b9c7bfe20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5d3b02e1f3bff0498b9c86b9c7bfe20, type: 3}
